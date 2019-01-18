@@ -43,10 +43,10 @@ int			main(int ac, char **av)
 		exit (1);
 	}
 	data.name_map = av[1];
+	init(&data);
 	parsor(&data);
 	data.mlx = mlx_init();
 	data.win = mlx_new_window(data.mlx, WIDTH, HEIGHT, "Wolf3D");
-	init(&data);
 	player_init(&data);
 	set_image_untextured(&data);
 	after_val(&data);

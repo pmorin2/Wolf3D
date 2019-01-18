@@ -14,7 +14,7 @@
 # define LIBFT_H
 
 # define U_LONG_M 4294967295
-# define BUFF_SIZE 32
+# define BUFF_SIZE 1
 # include <stdlib.h>
 
 typedef struct		s_list

@@ -41,15 +41,15 @@ static int	line_col(t_data *mlx)
 {
 	char	*line;
 
-	mlx->line = 0;
-	mlx->col = 0;
-	while ((mlx->test = get_next_line(mlx->fd, &line)) > 0)
+	while ((mlx->test = get_next_line(mlx->fd, &line)) > 0
+	       && line[0] == 'x')
 	{
 		mlx->line++;
 		mlx->col_count = -1;
 		while (line[++mlx->col_count])
 		{
-		  if (line[mlx->col_count] != ' ' && line[mlx->col_count] != 'x' && line[mlx->col_count] != 'o')
+		  if (line[mlx->col_count] != ' ' && line[mlx->col_count] != 'x'
+		      && line[mlx->col_count] != 'o')
 			{
 				ft_strdel(&line);
 				return (1);
@@ -95,25 +95,23 @@ int			parsor(t_data *mlx)
 
 	close_open(mlx);
 	if (line_col(mlx))
-	{
-		ft_putendl("Map error");
-		exit(1);
-	}
+	  error_def_map();
+	if (mlx->line < 4 || mlx->col < 4)
+	  small_map();
 	def_map(mlx);
 	close_open(mlx);
+	check_wall(mlx);
+	close_open(mlx);
 	i = -1;
-	while ((mlx->test = get_next_line(mlx->fd, &line)) > 0)
+	while ((mlx->test = get_next_line(mlx->fd, &line)) > 0
+	       && line[0] == 'x')
 	{
 		i++;
 		remp_tab(mlx, line, i);
 		ft_strdel(&line);
 	}
 	if (mlx->test == -1)
-	{
-		free_map(&mlx->map);
-		ft_putendl("Map error");
-		exit(1);
-	}
+	  error_map(mlx);
 	close(mlx->fd);
 	return (0);
 }

@@ -17,7 +17,7 @@ CC= gcc
 _GREEN= $'\x1b[32m'
 SRCS= srcs/check_map.c srcs/free_map.c srcs/main.c srcs/hook.c srcs/hook2.c \
 		srcs/init.c srcs/set_pixel.c srcs/calc.c srcs/draw.c srcs/draw2.c\
-        srcs/utils.c
+        srcs/utils.c srcs/error.c
 OBJS= $(SRCS:.c=.o)
 
 all: $(NAME)

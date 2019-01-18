@@ -103,4 +103,8 @@ int					parsor(t_data *data);
 void				free_map(char ***map);
 int					key_press(int key, t_data *data);
 int					key_release(int key, t_data *data);
+void				error_map(t_data *mlx);
+int					check_wall(t_data *mlx);
+void			  	small_map(void);
+void				error_def_map(void);
 #endif
