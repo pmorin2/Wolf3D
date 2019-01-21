@@ -6,7 +6,7 @@
 /*   By: cheuben <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 18:04:44 by cheuben           #+#    #+#             */
-/*   Updated: 2019/01/18 15:50:41 by pmorin           ###   ########.fr       */
+/*   Updated: 2019/01/21 16:22:51 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # define R_RIGHT 124
 # define R_LEFT 123
 # define MENU_HIDE 4
+# define W 13
+# define S 1
 
 typedef struct		s_data
 {
@@ -82,6 +84,8 @@ typedef struct		s_data
 	int				down;
 	int				r_left;
 	int				r_right;
+	int				help_menu;
+	char			*line_test;
 }					t_data;
 
 int					exit_program(void);
@@ -106,6 +110,6 @@ int					key_press(int key, t_data *data);
 int					key_release(int key, t_data *data);
 void				error_map(t_data *mlx);
 int					check_wall(t_data *mlx);
-void			  	small_map(void);
+void				small_map(void);
 void				error_def_map(void);
 #endif

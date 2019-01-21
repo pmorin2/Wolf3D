@@ -6,7 +6,7 @@
 /*   By: cheuben <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 18:04:27 by cheuben           #+#    #+#             */
-/*   Updated: 2019/01/18 14:20:34 by pmorin           ###   ########.fr       */
+/*   Updated: 2019/01/21 15:50:40 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void		init(t_data *data)
 {
+	data->fd = -1;
 	data->col = 0;
 	data->line = 0;
 	data->dir_x = -1;
@@ -27,10 +28,11 @@ void		init(t_data *data)
 
 void		after_val(t_data *data)
 {
-	mlx_string_put(data->mlx, data->win, 20, 780, 0x000000, "Menu");
-	mlx_string_put(data->mlx, data->win, 20, 820, 0x000000, "Move :");
-	mlx_string_put(data->mlx, data->win, 20, 840, 0x000000, "RIGHT = right");
-	mlx_string_put(data->mlx, data->win, 20, 860, 0x000000, "LEFT  = left");
-	mlx_string_put(data->mlx, data->win, 20, 880, 0x000000, "FRONT = up");
-	mlx_string_put(data->mlx, data->win, 20, 900, 0x000000, "BACK  = down");
+	mlx_string_put(data->mlx, data->win, 20, 70, 0xB9121B, "controls :");
+	mlx_string_put(data->mlx, data->win, 20, 90, 0xB9121B, "View Right = right_arrow");
+	mlx_string_put(data->mlx, data->win, 20, 110, 0xB9121B, "View Left = left_arrow");
+	mlx_string_put(data->mlx, data->win, 20, 130, 0xB9121B, "Move Forward = up_arrow");
+	mlx_string_put(data->mlx, data->win, 20, 150, 0xB9121B, "Move Backward = down_arrow");
+	mlx_string_put(data->mlx, data->win, 20, 170, 0xB9121B, "Move Left = A");
+    mlx_string_put(data->mlx, data->win, 20, 190, 0xB9121B, "Move Right = D");
 }

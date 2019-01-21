@@ -6,22 +6,22 @@
 /*   By: cheuben <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 18:04:30 by cheuben           #+#    #+#             */
-/*   Updated: 2019/01/18 15:44:00 by pmorin           ###   ########.fr       */
+/*   Updated: 2019/01/21 15:44:33 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int player_init(t_data *mlx)
+static int	player_init(t_data *mlx)
 {
 	int x;
 	int y;
 
 	y = -1;
-	while(mlx->map[++y])
+	while (mlx->map[++y])
 	{
 		x = -1;
-		while(mlx->map[y][++x])
+		while (mlx->map[y][++x])
 		{
 			if (mlx->map[y][x] == 'o')
 			{
@@ -40,7 +40,7 @@ int			main(int ac, char **av)
 	if (ac != 2)
 	{
 		ft_putendl("Usage : ./wolf3d (map)");
-		exit (1);
+		exit(1);
 	}
 	data.name_map = av[1];
 	init(&data);

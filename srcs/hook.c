@@ -6,7 +6,7 @@
 /*   By: cheuben <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 18:04:20 by cheuben           #+#    #+#             */
-/*   Updated: 2019/01/18 15:51:24 by pmorin           ###   ########.fr       */
+/*   Updated: 2019/01/21 16:22:07 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,20 @@ int		key_hook_left_right(t_data *data)
 {
 	if (data->right)
 	{
-		if (data->map[(int)data->pos_y][(int)(data->pos_x + data->plane_x * data->speed)] != 'x')
+		if (data->map[(int)data->pos_y][(int)(data->pos_x + data->plane_x
+											* data->speed)] != 'x')
 			data->pos_x += data->plane_x * data->speed;
-		if (data->map[(int)(data->pos_y + data->plane_y * data->speed)][(int)data->pos_x] != 'x')
+		if (data->map[(int)(data->pos_y + data->plane_y
+							* data->speed)][(int)data->pos_x] != 'x')
 			data->pos_y += data->plane_y * data->speed;
 	}
 	else if (data->left)
 	{
-		if (data->map[(int)data->pos_y][(int)(data->pos_x - data->plane_x * data->speed)] != 'x')
+		if (data->map[(int)data->pos_y][(int)(data->pos_x - data->plane_x
+											* data->speed)] != 'x')
 			data->pos_x -= data->plane_x * data->speed;
-		if (data->map[(int)(data->pos_y - data->plane_y * data->speed)][(int)data->pos_x] != 'x')
+		if (data->map[(int)(data->pos_y - data->plane_y
+							* data->speed)][(int)data->pos_x] != 'x')
 			data->pos_y -= data->plane_y * data->speed;
 	}
 	return (0);
@@ -64,55 +68,59 @@ int		key_hook_stop_hit(t_data *data)
 {
 	if (data->up)
 	{
-		if (data->map[(int)data->pos_y][(int)(data->pos_x + data->dir_x * data->speed)] != 'x')
+		if (data->map[(int)data->pos_y][(int)(data->pos_x + data->dir_x
+											* data->speed)] != 'x')
 			data->pos_x += data->dir_x * data->speed;
-		if (data->map[(int)(data->pos_y + data->dir_y * data->speed)][(int)data->pos_x] != 'x')
+		if (data->map[(int)(data->pos_y + data->dir_y
+							* data->speed)][(int)data->pos_x] != 'x')
 			data->pos_y += data->dir_y * data->speed;
 	}
 	else if (data->down)
 	{
-		if (data->map[(int)data->pos_y][(int)(data->pos_x - data->dir_x * data->speed)] != 'x')
+		if (data->map[(int)data->pos_y][(int)(data->pos_x - data->dir_x
+											* data->speed)] != 'x')
 			data->pos_x -= data->dir_x * data->speed;
-		if (data->map[(int)(data->pos_y - data->dir_y * data->speed)][(int)data->pos_x] != 'x')
+		if (data->map[(int)(data->pos_y - data->dir_y
+							* data->speed)][(int)data->pos_x] != 'x')
 			data->pos_y -= data->dir_y * data->speed;
 	}
 	return (0);
 }
 
-int key_press(int key, t_data *mlx)
+int		key_press(int key, t_data *mlx)
 {
-	if (key == UP)
+	if (key == UP || key == W)
 		mlx->up = 1;
-	else if (key == DOWN)
+	else if (key == DOWN || key == S)
 		mlx->down = 1;
 	else if (key == RIGHT)
 		mlx->right = 1;
 	else if (key == LEFT)
 		mlx->left = 1;
 	else if (key == R_RIGHT)
-        mlx->r_right = 1;
-    else if (key == R_LEFT)
-        mlx->r_left = 1;
+		mlx->r_right = 1;
+	else if (key == R_LEFT)
+		mlx->r_left = 1;
 	else if (key == ESC)
 		err_exit("Exit Program", *mlx);
 	else if (key == MENU_HIDE)
-        after_val(mlx);
+	  mlx->help_menu = (mlx->help_menu + 1) % 2;
 	return (0);
 }
 
-int     key_release(int key, t_data *mlx)
+int		key_release(int key, t_data *mlx)
 {
-	if (key == UP)
+	if (key == UP || key == W)
 		mlx->up = 0;
-	else if (key == DOWN)
+	else if (key == DOWN || key == S)
 		mlx->down = 0;
 	else if (key == RIGHT)
 		mlx->right = 0;
 	else if (key == LEFT)
 		mlx->left = 0;
 	else if (key == R_RIGHT)
-        mlx->r_right = 0;
-    else if (key == R_LEFT)
-        mlx->r_left = 0;
+		mlx->r_right = 0;
+	else if (key == R_LEFT)
+		mlx->r_left = 0;
 	return (0);
 }
