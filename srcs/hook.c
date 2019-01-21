@@ -6,7 +6,7 @@
 /*   By: cheuben <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 18:04:20 by cheuben           #+#    #+#             */
-/*   Updated: 2019/01/21 16:22:07 by pmorin           ###   ########.fr       */
+/*   Updated: 2019/01/21 17:34:28 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		key_hook_r_left_right(t_data *data)
 		data->plane_y = data->t_p * sin(-data->rot) + data->plane_y *
 			cos(-data->rot);
 	}
-	else if (data->r_left)
+	if (data->r_left)
 	{
 		data->t_d = data->dir_x;
 		data->dir_x = data->t_d * cos(data->rot) - data->dir_y * sin(data->rot);
@@ -52,7 +52,7 @@ int		key_hook_left_right(t_data *data)
 							* data->speed)][(int)data->pos_x] != 'x')
 			data->pos_y += data->plane_y * data->speed;
 	}
-	else if (data->left)
+	if (data->left)
 	{
 		if (data->map[(int)data->pos_y][(int)(data->pos_x - data->plane_x
 											* data->speed)] != 'x')
@@ -75,7 +75,7 @@ int		key_hook_stop_hit(t_data *data)
 							* data->speed)][(int)data->pos_x] != 'x')
 			data->pos_y += data->dir_y * data->speed;
 	}
-	else if (data->down)
+	if (data->down)
 	{
 		if (data->map[(int)data->pos_y][(int)(data->pos_x - data->dir_x
 											* data->speed)] != 'x')
