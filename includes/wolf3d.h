@@ -71,6 +71,7 @@ typedef struct		s_data
 	char			**map;
 	char			*name_map;
 	int				line;
+	int				line_count;
 	int				col;
 	int				col_count;
 	int				test;

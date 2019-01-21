@@ -42,11 +42,12 @@ int	check_wall(t_data *mlx)
 {
   char	*line;
 
-  mlx->col_count = 0;
-  while ((mlx->test = get_next_line(mlx->fd, &line)) > 0)
+  mlx->line_count = 0;
+  while ((mlx->test = get_next_line(mlx->fd, &line)) > 0
+	 && mlx->line_count <= mlx->line)
     {
-      mlx->col_count++;
-      if (mlx->col_count == 1 || mlx->col_count == mlx->line)
+      mlx->line_count++;
+      if (mlx->line_count == 1 || mlx->line_count == mlx->line)
 	{
 	  if (first_last(line))
 	    {
