@@ -6,11 +6,12 @@
 /*   By: cheuben <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 18:04:40 by cheuben           #+#    #+#             */
-/*   Updated: 2019/01/03 18:04:42 by cheuben          ###   ########.fr       */
+/*   Updated: 2019/01/23 16:28:12 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+# include "libft.h"
 
 void		err_exit(char *str, t_data data)
 {

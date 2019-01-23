@@ -6,7 +6,7 @@
 /*   By: msiesse <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 15:55:32 by msiesse           #+#    #+#             */
-/*   Updated: 2018/11/21 13:01:36 by msiesse          ###   ########.fr       */
+/*   Updated: 2019/01/23 16:30:52 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ static int		crea_lst(const int fd, t_list **lst)
 	t_list	*elem;
 	char	buf[BUFF_SIZE + 1];
 	int		size;
+	int		count;
 
-	while ((size = read(fd, buf, BUFF_SIZE)) > 0)
+	count = 0;
+	while ((size = read(fd, buf, BUFF_SIZE)) > 0 && count++ < 100000)
 	{
 		buf[size] = 0;
 		if (!(elem = ft_lstnew(buf, size + 1)))
@@ -37,7 +39,7 @@ static int		crea_lst(const int fd, t_list **lst)
 		if (size == 0)
 			break ;
 	}
-	if (size == -1)
+	if (size == -1 || count == 100000)
 		return (0);
 	return (1);
 }

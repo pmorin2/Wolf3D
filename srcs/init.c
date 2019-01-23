@@ -6,11 +6,13 @@
 /*   By: cheuben <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 18:04:27 by cheuben           #+#    #+#             */
-/*   Updated: 2019/01/23 15:14:47 by pmorin           ###   ########.fr       */
+/*   Updated: 2019/01/23 16:27:14 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+# include "mlx.h"
+# include <math.h>
 
 void		init(t_data *data)
 {

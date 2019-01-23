@@ -6,11 +6,13 @@
 /*   By: cheuben <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 18:04:30 by cheuben           #+#    #+#             */
-/*   Updated: 2019/01/21 15:44:33 by pmorin           ###   ########.fr       */
+/*   Updated: 2019/01/23 16:27:31 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+# include "libft.h"
+# include "mlx.h"
 
 static int	player_init(t_data *mlx)
 {

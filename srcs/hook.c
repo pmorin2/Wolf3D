@@ -6,11 +6,12 @@
 /*   By: cheuben <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 18:04:20 by cheuben           #+#    #+#             */
-/*   Updated: 2019/01/23 15:15:03 by pmorin           ###   ########.fr       */
+/*   Updated: 2019/01/23 16:26:24 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+# include <math.h>
 
 int		key_hook_r_left_right(t_data *data)
 {

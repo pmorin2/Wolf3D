@@ -6,11 +6,13 @@
 /*   By: cheuben <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 18:04:24 by cheuben           #+#    #+#             */
-/*   Updated: 2019/01/23 15:12:42 by pmorin           ###   ########.fr       */
+/*   Updated: 2019/01/23 16:26:41 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+# include "libft.h"
+# include "mlx.h"
 
 int		exit_program(void)
 {

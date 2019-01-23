@@ -6,11 +6,12 @@
 /*   By: cheuben <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 18:04:12 by cheuben           #+#    #+#             */
-/*   Updated: 2019/01/03 18:04:14 by cheuben          ###   ########.fr       */
+/*   Updated: 2019/01/23 16:24:53 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+# include "mlx.h"
 
 int			color_map(t_data *data)
 {

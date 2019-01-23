@@ -6,15 +6,12 @@
 /*   By: cheuben <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 18:04:44 by cheuben           #+#    #+#             */
-/*   Updated: 2019/01/23 15:15:41 by pmorin           ###   ########.fr       */
+/*   Updated: 2019/01/23 16:22:44 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF3D_H
 # define WOLF3D_H
-# include "libft.h"
-# include "mlx.h"
-# include <math.h>
 # define WIDTH 812
 # define HEIGHT 684
 # define UP 126

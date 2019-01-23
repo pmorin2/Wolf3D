@@ -6,14 +6,14 @@
 /*   By: pmorin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 14:26:00 by pmorin            #+#    #+#             */
-/*   Updated: 2019/01/23 15:16:50 by pmorin           ###   ########.fr       */
+/*   Updated: 2019/01/23 16:30:06 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include "wolf3d.h"
+#include "libft.h"
 
 static int	def_map(t_data *mlx)
 {

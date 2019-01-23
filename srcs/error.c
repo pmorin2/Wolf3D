@@ -6,11 +6,12 @@
 /*   By: pmorin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 14:43:44 by pmorin            #+#    #+#             */
-/*   Updated: 2019/01/23 15:09:24 by pmorin           ###   ########.fr       */
+/*   Updated: 2019/01/23 16:28:50 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+# include "libft.h"
 
 void	error_def_map(void)
 {

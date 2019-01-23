@@ -6,11 +6,12 @@
 /*   By: cheuben <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 18:03:58 by cheuben           #+#    #+#             */
-/*   Updated: 2019/01/18 15:09:38 by pmorin           ###   ########.fr       */
+/*   Updated: 2019/01/23 16:23:14 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+# include <math.h>
 
 void		ray_pos(t_data *data, int x)
 {
