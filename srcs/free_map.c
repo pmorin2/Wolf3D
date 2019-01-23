@@ -6,7 +6,7 @@
 /*   By: pmorin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 17:54:11 by pmorin            #+#    #+#             */
-/*   Updated: 2019/01/21 16:15:24 by pmorin           ###   ########.fr       */
+/*   Updated: 2019/01/23 15:12:24 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,21 +48,20 @@ int			check_wall(t_data *mlx)
 		if (mlx->line_count == 1 || mlx->line_count == mlx->line)
 		{
 			if (first_last(mlx->line_test))
-			{
-				ft_strdel(&mlx->line_test);
 				error_map(mlx);
-			}
 		}
 		else
 		{
 			if (common_line(mlx->line_test))
-			{
-				ft_strdel(&mlx->line_test);
 				error_map(mlx);
-			}
 		}
 		ft_strdel(&mlx->line_test);
 	}
+	ft_strdel(&mlx->line_test);
+	while ((mlx->test = get_next_line(mlx->fd, &mlx->line_test)) > 0)
+		ft_strdel(&mlx->line_test);
+	if (mlx->test == -1)
+		error_map(mlx);
 	return (0);
 }
 

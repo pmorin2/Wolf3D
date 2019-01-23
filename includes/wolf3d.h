@@ -6,7 +6,7 @@
 /*   By: cheuben <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 18:04:44 by cheuben           #+#    #+#             */
-/*   Updated: 2019/01/21 16:22:51 by pmorin           ###   ########.fr       */
+/*   Updated: 2019/01/23 15:15:41 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ typedef struct		s_data
 	int				r_right;
 	int				help_menu;
 	char			*line_test;
+	char			*l;
+	int				i;
 }					t_data;
 
 int					exit_program(void);

@@ -6,7 +6,7 @@
 /*   By: cheuben <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 18:04:20 by cheuben           #+#    #+#             */
-/*   Updated: 2019/01/21 17:34:28 by pmorin           ###   ########.fr       */
+/*   Updated: 2019/01/23 15:15:03 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int		key_press(int key, t_data *mlx)
 	else if (key == ESC)
 		err_exit("Exit Program", *mlx);
 	else if (key == MENU_HIDE)
-	  mlx->help_menu = (mlx->help_menu + 1) % 2;
+		mlx->help_menu = (mlx->help_menu + 1) % 2;
 	return (0);
 }
 

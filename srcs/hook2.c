@@ -6,7 +6,7 @@
 /*   By: cheuben <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 18:04:24 by cheuben           #+#    #+#             */
-/*   Updated: 2019/01/21 15:37:27 by pmorin           ###   ########.fr       */
+/*   Updated: 2019/01/23 15:12:42 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ int		key_hook(t_data *data)
 	mlx_string_put(data->mlx, data->win, 20, 10, 0xB9121B, "exit = esc");
 	mlx_string_put(data->mlx, data->win, 20, 30, 0xB9121B, "help = H");
 	if (data->help_menu)
-	  after_val(data);
+		after_val(data);
 	return (0);
 }
