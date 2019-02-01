@@ -38,17 +38,21 @@ static int	def_map(t_data *mlx)
 
 static int	line_col(t_data *mlx)
 {
-	while ((mlx->test = get_next_line(mlx->fd, &mlx->l)) > 0
-			&& mlx->l[0] == 'x')
+  int check;
+
+  check = 1;
+	while ((mlx->test = get_line(mlx->fd, &mlx->l)) >= 0
+			&& mlx->l[0] == 'x' && check)
 	{
+		check = mlx->test;
 		mlx->line++;
-		mlx->col_count = -1;
-		while (mlx->l[++mlx->col_count])
-		{
-			if (mlx->l[mlx->col_count] != ' ' && mlx->l[mlx->col_count] != 'x'
-				&& mlx->l[mlx->col_count] != 'o')
-				mlx->col = 0;
-		}
+		if(mlx->line == 1000)
+		  {
+		    ft_strdel(&mlx->l);
+		    ft_putendl("(Map is too big !)");
+		    return (1);
+		  }
+		mlx->col_count = ft_strlen(mlx->l);
 		ft_strdel(&mlx->l);
 		if (mlx->col == -1)
 			mlx->col = mlx->col_count;
@@ -56,8 +60,6 @@ static int	line_col(t_data *mlx)
 			return (1);
 	}
 	ft_strdel(&mlx->l);
-	while ((mlx->test = get_next_line(mlx->fd, &mlx->l)) > 0)
-		ft_strdel(&mlx->l);
 	if (mlx->line == 0 || mlx->col == 0 || mlx->test == -1)
 		return (1);
 	return (0);
@@ -87,6 +89,9 @@ static int	close_open(t_data *mlx)
 
 int			parsor(t_data *mlx)
 {
+  int check;
+
+  check = 1;
 	close_open(mlx);
 	if (line_col(mlx))
 		error_def_map();
@@ -96,17 +101,15 @@ int			parsor(t_data *mlx)
 	close_open(mlx);
 	check_wall(mlx);
 	close_open(mlx);
-	mlx->i = -1;
-	while ((mlx->test = get_next_line(mlx->fd, &mlx->l)) > 0
-			&& mlx->l[0] == 'x')
+	while ((mlx->test = get_line(mlx->fd, &mlx->l)) >= 0
+			&& mlx->l[0] == 'x' && check)
 	{
+	  check = mlx->test;
 		mlx->i++;
 		remp_tab(mlx, mlx->l, mlx->i);
 		ft_strdel(&mlx->l);
 	}
 	ft_strdel(&mlx->l);
-	while ((mlx->test = get_next_line(mlx->fd, &mlx->l)) > 0)
-		ft_strdel(&mlx->l);
 	if (mlx->test == -1)
 		error_map(mlx);
 	close(mlx->fd);

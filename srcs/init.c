@@ -24,6 +24,7 @@ void		init(t_data *data)
 	data->plane_x = 0;
 	data->plane_y = 0.66;
 	data->hit = 0;
+	data->i = -1;
 	data->rot = M_PI / (double)50;
 	data->speed = 0.075;
 }

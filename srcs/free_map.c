@@ -40,10 +40,13 @@ static int	first_last(char *line)
 
 int			check_wall(t_data *mlx)
 {
+  int check;
+
+  check = 1;
 	mlx->line_count = 0;
-	while ((mlx->test = get_next_line(mlx->fd, &mlx->line_test)) > 0
-			&& mlx->line_count < mlx->line)
+	while ((mlx->test = get_line(mlx->fd, &mlx->line_test)) >= 0 && check)
 	{
+	  check = mlx->test;
 		mlx->line_count++;
 		if (mlx->line_count == 1 || mlx->line_count == mlx->line)
 		{
@@ -58,8 +61,6 @@ int			check_wall(t_data *mlx)
 		ft_strdel(&mlx->line_test);
 	}
 	ft_strdel(&mlx->line_test);
-	while ((mlx->test = get_next_line(mlx->fd, &mlx->line_test)) > 0)
-		ft_strdel(&mlx->line_test);
 	if (mlx->test == -1)
 		error_map(mlx);
 	return (0);

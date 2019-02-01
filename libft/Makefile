@@ -28,7 +28,8 @@ SRC= ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c \
 	 ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c \
 	 ft_putnbr_fd.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c \
 	 ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_strspn.c ft_strcspn.c \
-	 ft_strtok.c ft_lstpushback.c get_next_line.c ft_tabdup.c ft_tabcpy.c
+	 ft_strtok.c ft_lstpushback.c get_next_line.c ft_tabdup.c ft_tabcpy.c\
+	 read_line.c
 OBJ= $(SRC:.c=.o)
 
 all: $(NAME)

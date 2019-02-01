@@ -89,5 +89,5 @@ int					ft_lstpushback(t_list **alst, t_list *new);
 int					get_next_line(const int fd, char **line);
 char				**ft_tabdup(char **src);
 char				**ft_tabcpy(char **dst, const char **src);
-
+int					get_line(const int fd, char **line);
 #endif
