@@ -11,11 +11,13 @@
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-# include "libft.h"
+#include "libft.h"
+#include "mlx.h"
 
-void		err_exit(char *str, t_data data)
+void		err_exit(char *str, t_data *data)
 {
-	(void)data.mlx;
+	free_map(&data->map);
+	mlx_destroy_window(data->mlx, data->win);
 	ft_putendl(str);
 	exit(1);
 }

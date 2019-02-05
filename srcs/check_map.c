@@ -28,7 +28,7 @@ static int	def_map(t_data *mlx)
 	while (++i < mlx->line)
 		if (!(mlx->map[i] = malloc(sizeof(**mlx->map) * (mlx->col + 1))))
 		{
-			free_map(&mlx->map);
+		  free_map(&mlx->map);
 			ft_putendl("Malloc error");
 			exit(1);
 		}
@@ -94,7 +94,7 @@ int			parsor(t_data *mlx)
   check = 1;
 	close_open(mlx);
 	if (line_col(mlx))
-		error_def_map();
+		error_def_mapfree();
 	if (mlx->line < 4 || mlx->col < 4)
 		small_map();
 	def_map(mlx);

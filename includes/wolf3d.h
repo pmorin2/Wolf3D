@@ -25,7 +25,7 @@
 # define W 13
 # define S 1
 
-typedef struct		s_data
+typedef struct          s_data
 {
 	void			*mlx;
 	void			*win;
@@ -85,9 +85,13 @@ typedef struct		s_data
 	char			*line_test;
 	char			*l;
 	int				i;
+	double				wallx;
+	int				texX;
+	int                             texY;
+	int			texture[4][64][64];
 }					t_data;
 
-int					exit_program(void);
+int					exit_program(t_data *data);
 void				calc_height_line(t_data *data);
 void				after_val(t_data *data);
 int					hook_after_val(t_data *data, int key);
@@ -101,7 +105,7 @@ void				set_image_untextured(t_data *data);
 void				print_map(t_data *data, int x);
 void				ray_pos(t_data *data, int x);
 void				init(t_data *data);
-void				err_exit(char *str, t_data data);
+void				err_exit(char *str, t_data *data);
 void				usage(void);
 int					parsor(t_data *data);
 void				free_map(char ***map);
@@ -110,5 +114,8 @@ int					key_release(int key, t_data *data);
 void				error_map(t_data *mlx);
 int					check_wall(t_data *mlx);
 void				small_map(void);
-void				error_def_map(void);
+void				error_def_map(t_data *mlx);
+void                            error_def_mapfree(void);
+void				init_tex(t_data *data);
+int					pixel_cal(t_data *data, int i, int texnum);
 #endif

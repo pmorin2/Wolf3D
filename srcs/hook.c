@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-# include <math.h>
+#include <math.h>
 
 int		key_hook_r_left_right(t_data *data)
 {
@@ -47,19 +47,19 @@ int		key_hook_left_right(t_data *data)
 	if (data->right)
 	{
 		if (data->map[(int)data->pos_y][(int)(data->pos_x + data->plane_x
-											* data->speed)] != 'x')
+						      * data->speed * 5)] != 'x')
 			data->pos_x += data->plane_x * data->speed;
 		if (data->map[(int)(data->pos_y + data->plane_y
-							* data->speed)][(int)data->pos_x] != 'x')
+				    * data->speed * 5)][(int)data->pos_x] != 'x')
 			data->pos_y += data->plane_y * data->speed;
 	}
 	if (data->left)
 	{
 		if (data->map[(int)data->pos_y][(int)(data->pos_x - data->plane_x
-											* data->speed)] != 'x')
+						      * data->speed * 5)] != 'x')
 			data->pos_x -= data->plane_x * data->speed;
 		if (data->map[(int)(data->pos_y - data->plane_y
-							* data->speed)][(int)data->pos_x] != 'x')
+				    * data->speed * 5)][(int)data->pos_x] != 'x')
 			data->pos_y -= data->plane_y * data->speed;
 	}
 	return (0);
@@ -67,22 +67,22 @@ int		key_hook_left_right(t_data *data)
 
 int		key_hook_stop_hit(t_data *data)
 {
-	if (data->up)
-	{
-		if (data->map[(int)data->pos_y][(int)(data->pos_x + data->dir_x
-											* data->speed)] != 'x')
-			data->pos_x += data->dir_x * data->speed;
-		if (data->map[(int)(data->pos_y + data->dir_y
-							* data->speed)][(int)data->pos_x] != 'x')
-			data->pos_y += data->dir_y * data->speed;
-	}
-	if (data->down)
+  if (data->up)
+    {
+      if (data->map[(int)data->pos_y][(int)(data->pos_x + data->dir_x
+					    * data->speed * 5)] != 'x')
+	data->pos_x += data->dir_x * data->speed;
+      if (data->map[(int)(data->pos_y + data->dir_y
+			  * data->speed * 5)][(int)data->pos_x] != 'x')
+	data->pos_y += data->dir_y * data->speed;
+    }
+  if (data->down)
 	{
 		if (data->map[(int)data->pos_y][(int)(data->pos_x - data->dir_x
-											* data->speed)] != 'x')
+						      * data->speed * 5)] != 'x')
 			data->pos_x -= data->dir_x * data->speed;
 		if (data->map[(int)(data->pos_y - data->dir_y
-							* data->speed)][(int)data->pos_x] != 'x')
+				    * data->speed * 5)][(int)data->pos_x] != 'x')
 			data->pos_y -= data->dir_y * data->speed;
 	}
 	return (0);
@@ -94,6 +94,8 @@ int		key_press(int key, t_data *mlx)
 		mlx->up = 1;
 	else if (key == DOWN || key == S)
 		mlx->down = 1;
+	else if (key == 257)
+	  mlx->speed = 0.05;
 	else if (key == RIGHT)
 		mlx->right = 1;
 	else if (key == LEFT)
@@ -103,7 +105,7 @@ int		key_press(int key, t_data *mlx)
 	else if (key == R_LEFT)
 		mlx->r_left = 1;
 	else if (key == ESC)
-		err_exit("Exit Program", *mlx);
+		err_exit("Exit Program", mlx);
 	else if (key == MENU_HIDE)
 		mlx->help_menu = (mlx->help_menu + 1) % 2;
 	return (0);
@@ -115,6 +117,8 @@ int		key_release(int key, t_data *mlx)
 		mlx->up = 0;
 	else if (key == DOWN || key == S)
 		mlx->down = 0;
+	else if (key == 257)
+          mlx->speed = 0.075;
 	else if (key == RIGHT)
 		mlx->right = 0;
 	else if (key == LEFT)

@@ -22,10 +22,10 @@ void		ray_pos(t_data *data, int x)
 	data->ray_dir_y = data->dir_y + data->plane_y * data->cam_x;
 	data->map_x = (int)data->ray_pos_x;
 	data->map_y = (int)data->ray_pos_y;
-	data->delta_dis_x = sqrt(1 + (data->ray_dir_y * data->ray_dir_y) /
-			(data->ray_dir_x * data->ray_dir_x));
-	data->delta_dis_y = sqrt(1 + (data->ray_dir_x * data->ray_dir_x) /
-			(data->ray_dir_y * data->ray_dir_y));
+	data->delta_dis_x = sqrt(1 + (data->ray_dir_y * data->ray_dir_y)
+				 / (data->ray_dir_x * data->ray_dir_x));
+	data->delta_dis_y = sqrt(1 + (data->ray_dir_x * data->ray_dir_x)
+				 / (data->ray_dir_y * data->ray_dir_y));
 }
 
 void		calcul_side_dist(t_data *data)

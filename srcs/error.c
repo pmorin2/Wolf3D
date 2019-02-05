@@ -13,8 +13,16 @@
 #include "wolf3d.h"
 # include "libft.h"
 
-void	error_def_map(void)
+void	error_def_mapfree(void)
 {
+  ft_putendl("Map is invalid !");
+  exit(1);
+}
+
+void	error_def_map(t_data *mlx)
+{
+  free_map(&mlx->map);
+  (void)mlx;
 	ft_putendl("Map is invalid !");
 	exit(1);
 }

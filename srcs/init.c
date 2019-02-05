@@ -11,8 +11,32 @@
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-# include "mlx.h"
-# include <math.h>
+#include "mlx.h"
+#include <math.h>
+#include "libft.h"
+
+void            init_tex(t_data *data)
+{
+  int i;
+  int j;
+  int xorcolor;
+  int xycolor;
+
+  j = -1;
+  while (++j < 64)
+    {
+      i = -1;
+      while (++i < 64)
+	{
+	  xorcolor = (j * 256 / 64) ^ (i * 256 / 64);
+	  xycolor = i * 128 / 64 + j * 128 / 64;
+	  data->texture[0][j][i] = (8421504) * (j % 8 && i % 8 && j != 63 && i != 63);
+	  data->texture[1][j][i] = 12582912 * (j % 16 && i % 16 && j != 63 && i != 63);
+	  data->texture[2][j][i] = 256 * xycolor + 65536 * xycolor;
+	  data->texture[3][j][i] = 256 * xorcolor;
+	}
+    }
+}
 
 void		init(t_data *data)
 {

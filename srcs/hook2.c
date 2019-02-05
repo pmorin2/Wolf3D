@@ -14,9 +14,11 @@
 # include "libft.h"
 # include "mlx.h"
 
-int		exit_program(void)
+int		exit_program(t_data *data)
 {
 	ft_putendl("Exit Program");
+	mlx_destroy_window(data->mlx, data->win);
+	free_map(&data->map);
 	exit(1);
 	return (0);
 }

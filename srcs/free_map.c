@@ -60,7 +60,7 @@ int			check_wall(t_data *mlx)
 		}
 		ft_strdel(&mlx->line_test);
 	}
-	ft_strdel(&mlx->line_test);
+	ft_strdel(&mlx->l);
 	if (mlx->test == -1)
 		error_map(mlx);
 	return (0);
@@ -68,22 +68,19 @@ int			check_wall(t_data *mlx)
 
 void		free_map(char ***map)
 {
-	char	**mem;
+  char **mem;
 
+  mem = *map;
 	if (*map && **map)
 	{
-		mem = *map;
 		while (**map)
 		{
-			if (*map && **map)
+		  if (*map)
 			{
-				free(**map);
-				**map = NULL;
+			  ft_strdel(*map);
+			  (*map)++;
 			}
-			(*map)++;
-		}
-		*map = mem;
-		free(*map);
-		*map = NULL;
+	       	}
+		free(mem);
 	}
 }

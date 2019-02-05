@@ -18,7 +18,9 @@ static int	player_init(t_data *mlx)
 {
 	int x;
 	int y;
+	int count;
 
+	count = 0;
 	y = -1;
 	while (mlx->map[++y])
 	{
@@ -29,9 +31,12 @@ static int	player_init(t_data *mlx)
 			{
 				mlx->pos_x = (double)x + 0.5;
 				mlx->pos_y = (double)y + 0.5;
+				count++;
 			}
 		}
 	}
+	if (count != 1)
+	    error_def_map(mlx);
 	return (0);
 }
 
@@ -50,6 +55,7 @@ int			main(int ac, char **av)
 	data.mlx = mlx_init();
 	data.win = mlx_new_window(data.mlx, WIDTH, HEIGHT, "Wolf3D");
 	player_init(&data);
+	init_tex(&data);
 	set_image_untextured(&data);
 	after_val(&data);
 	mlx_hook(data.win, 17, 18, exit_program, &data);
@@ -57,6 +63,5 @@ int			main(int ac, char **av)
 	mlx_hook(data.win, 3, (1L << 1), key_release, &data);
 	mlx_loop_hook(data.mlx, key_hook, &data);
 	mlx_loop(data.mlx);
-	mlx_destroy_image(data.mlx, data.img);
 	return (0);
 }
