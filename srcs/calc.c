@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   calc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cheuben <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pmorin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/03 18:03:58 by cheuben           #+#    #+#             */
-/*   Updated: 2019/01/23 16:23:14 by pmorin           ###   ########.fr       */
+/*   Created: 2019/01/03 18:03:58 by pmorin            #+#    #+#             */
+/*   Updated: 2019/02/06 14:44:34 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-# include <math.h>
+#include <math.h>
 
 void		ray_pos(t_data *data, int x)
 {
@@ -23,9 +23,9 @@ void		ray_pos(t_data *data, int x)
 	data->map_x = (int)data->ray_pos_x;
 	data->map_y = (int)data->ray_pos_y;
 	data->delta_dis_x = sqrt(1 + (data->ray_dir_y * data->ray_dir_y)
-				 / (data->ray_dir_x * data->ray_dir_x));
+							/ (data->ray_dir_x * data->ray_dir_x));
 	data->delta_dis_y = sqrt(1 + (data->ray_dir_x * data->ray_dir_x)
-				 / (data->ray_dir_y * data->ray_dir_y));
+							/ (data->ray_dir_y * data->ray_dir_y));
 }
 
 void		calcul_side_dist(t_data *data)

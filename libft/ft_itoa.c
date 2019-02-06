@@ -3,58 +3,67 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msiesse <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pmorin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 17:07:06 by msiesse           #+#    #+#             */
-/*   Updated: 2018/11/20 17:22:55 by msiesse          ###   ########.fr       */
+/*   Created: 2018/11/09 16:39:39 by pmorin            #+#    #+#             */
+/*   Updated: 2018/11/14 12:12:44 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	get_size(int n)
+static int	len(unsigned int nbr)
 {
-	int	size;
+	int count;
 
-	size = 1;
-	if (n < 0)
-		size++;
-	while ((n = n / 10) != 0)
-		size++;
-	return (size);
+	count = 1;
+	while (nbr > 9)
+	{
+		count++;
+		nbr /= 10;
+	}
+	return (count);
 }
 
-static int	ft_pow(int n, int power)
+static char	*remp_dest(int count, unsigned int *neg, unsigned int nbr
+					, char *dest)
 {
-	int i;
-	int result;
-
-	i = 0;
-	result = 1;
-	while (i++ < power)
-		result *= n;
-	return (result);
+	neg[1] = nbr;
+	if (nbr <= 9)
+		neg[1] = nbr + 1;
+	while (nbr > 9)
+	{
+		dest[count - 1] = (nbr % 10) + 48;
+		nbr = nbr / 10;
+		count--;
+	}
+	if (neg[1] <= 9 && neg[0])
+	{
+		dest[count - 1] = '-';
+		return (dest);
+	}
+	dest[count - 1] = nbr + 48;
+	if (neg[0])
+		dest[count - 2] = '-';
+	return (dest);
 }
 
 char		*ft_itoa(int n)
 {
-	char			*nbr;
-	size_t			i;
-	size_t			len;
-	unsigned int	un;
+	int				count;
+	unsigned int	neg[2];
+	char			*dest;
+	unsigned int	nbr;
 
-	i = 0;
-	len = get_size(n);
-	if (!(nbr = ft_strnew(len)))
+	neg[0] = 0;
+	if (n < 0)
+		nbr = -n + neg[0]++;
+	else
+		nbr = n;
+	count = len(nbr);
+	if (neg[0] == 1)
+		count++;
+	if (!(dest = ft_strnew(count)))
 		return (NULL);
-	if (n < 0 && ++i)
-		nbr[0] = '-';
-	un = (n > 0) ? n : -n;
-	while (i < len)
-	{
-		nbr[i] = un / ft_pow(10, len - i - 1) + 48;
-		un %= ft_pow(10, len - i - 1);
-		i++;
-	}
-	return (nbr);
+	return (remp_dest(count, neg, nbr, dest));
 }

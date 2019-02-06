@@ -6,7 +6,7 @@
 /*   By: pmorin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 17:54:11 by pmorin            #+#    #+#             */
-/*   Updated: 2019/01/23 15:12:24 by pmorin           ###   ########.fr       */
+/*   Updated: 2019/02/06 14:34:49 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ static int	first_last(char *line)
 
 int			check_wall(t_data *mlx)
 {
-  int check;
+	int check;
 
-  check = 1;
+	check = 1;
 	mlx->line_count = 0;
 	while ((mlx->test = get_line(mlx->fd, &mlx->line_test)) >= 0 && check)
 	{
-	  check = mlx->test;
+		check = mlx->test;
 		mlx->line_count++;
 		if (mlx->line_count == 1 || mlx->line_count == mlx->line)
 		{
@@ -68,19 +68,19 @@ int			check_wall(t_data *mlx)
 
 void		free_map(char ***map)
 {
-  char **mem;
+	char **mem;
 
-  mem = *map;
+	mem = *map;
 	if (*map && **map)
 	{
 		while (**map)
 		{
-		  if (*map)
+			if (*map)
 			{
-			  ft_strdel(*map);
-			  (*map)++;
+				ft_strdel(*map);
+				(*map)++;
 			}
-	       	}
+		}
 		free(mem);
 	}
 }

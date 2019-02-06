@@ -3,34 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msiesse <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pmorin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 12:00:35 by msiesse           #+#    #+#             */
-/*   Updated: 2018/11/13 14:46:09 by msiesse          ###   ########.fr       */
+/*   Created: 2018/11/08 14:48:10 by pmorin            #+#    #+#             */
+/*   Updated: 2018/11/13 15:04:00 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
-{
-	int		i;
-	int		signe;
-	int		num;
+#include <stdlib.h>
 
-	signe = 1;
+int	ft_atoi(const char *nptr)
+{
+	size_t	i;
+	long	dest;
+	int		neg;
+
 	i = 0;
-	num = 0;
-	while ((str[i] <= 13 && str[i] >= 8) || str[i] == ' ')
+	dest = 0;
+	neg = 1;
+	while (((nptr[i] > 7 && nptr[i] < 14) || nptr[i] == ' ') && nptr[i])
 		i++;
-	if (str[i] == '-' || str[i] == '+')
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		signe = 44 - str[i];
+		neg = 44 - nptr[i];
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (nptr[i] > 47 && nptr[i] < 58 && nptr[i])
 	{
-		num *= 10;
-		num += str[i] - 48;
+		dest += nptr[i] - 48;
+		if (nptr[i + 1] > 47 && nptr[i + 1] < 58)
+			dest *= 10;
 		i++;
 	}
-	return (num * signe);
+	return (dest * neg);
 }

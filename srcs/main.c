@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cheuben <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pmorin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/03 18:04:30 by cheuben           #+#    #+#             */
-/*   Updated: 2019/01/23 16:27:31 by pmorin           ###   ########.fr       */
+/*   Created: 2019/01/03 18:04:30 by pmorin            #+#    #+#             */
+/*   Updated: 2019/02/06 14:47:21 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-# include "libft.h"
-# include "mlx.h"
+#include "libft.h"
+#include "mlx.h"
 
 static int	player_init(t_data *mlx)
 {
 	int x;
 	int y;
-	int count;
+	int	count;
 
 	count = 0;
 	y = -1;
@@ -36,7 +36,7 @@ static int	player_init(t_data *mlx)
 		}
 	}
 	if (count != 1)
-	    error_def_map(mlx);
+		error_def_map(mlx);
 	return (0);
 }
 

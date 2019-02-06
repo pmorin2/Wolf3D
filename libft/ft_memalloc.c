@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_memmalloc.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msiesse <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pmorin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 16:59:22 by msiesse           #+#    #+#             */
-/*   Updated: 2018/11/12 11:33:20 by msiesse          ###   ########.fr       */
+/*   Created: 2018/11/09 10:09:20 by pmorin            #+#    #+#             */
+/*   Updated: 2018/11/12 15:40:00 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	*ft_memalloc(size_t size)
 {
-	char	*str;
+	void	*str;
 
-	if (!(str = malloc(size)))
+	if (!(str = malloc(sizeof(*str) * size)))
 		return (NULL);
 	ft_bzero(str, size);
 	return (str);

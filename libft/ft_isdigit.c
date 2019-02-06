@@ -3,22 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msiesse <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pmorin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 14:59:04 by msiesse           #+#    #+#             */
-/*   Updated: 2018/11/13 14:48:48 by msiesse          ###   ########.fr       */
+/*   Created: 2018/11/08 16:09:03 by pmorin            #+#    #+#             */
+/*   Updated: 2018/11/13 14:48:21 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isdigit(int c)
 {
-	unsigned char	dig;
-
-	if (c >= 0 && c < 256)
-		dig = (unsigned char)c;
-	else
-		return (0);
-	if (dig >= '0' && dig <= '9')
+	if ((c >= '0' && c <= '9') && (c >= 0 && c <= 255))
 		return (1);
 	return (0);
 }

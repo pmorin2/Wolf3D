@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstpushback.c                                   :+:      :+:    :+:   */
+/*   ft_lstaddafter.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msiesse <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pmorin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/11 15:09:37 by msiesse           #+#    #+#             */
-/*   Updated: 2018/11/14 13:40:44 by msiesse          ###   ########.fr       */
+/*   Created: 2018/11/14 10:18:00 by pmorin            #+#    #+#             */
+/*   Updated: 2018/11/15 13:36:40 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_lstpushback(t_list **alst, t_list *new)
+void	ft_lstaddafter(t_list *lst, t_list *new)
 {
-	t_list	*head;
+	t_list *cpnew;
 
-	if (alst && new)
+	if (lst && new)
 	{
-		head = *alst;
-		if (*alst == NULL)
-		{
-			*alst = new;
-			return (1);
-		}
-		while ((*alst)->next)
-			(*alst) = (*alst)->next;
-		(*alst)->next = new;
-		*alst = head;
-		return (1);
+		cpnew = ft_lstnew(new->content, new->content_size);
+		cpnew->next = lst->next;
+		lst->next = cpnew;
 	}
-	return (0);
 }

@@ -3,55 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msiesse <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pmorin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 13:38:21 by msiesse           #+#    #+#             */
-/*   Updated: 2018/11/09 14:50:40 by msiesse          ###   ########.fr       */
+/*   Created: 2018/11/09 13:42:59 by pmorin            #+#    #+#             */
+/*   Updated: 2018/11/09 14:42:29 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	*count_blank(const char *s)
+char	*ft_strtrim(char const *s)
 {
-	size_t	*blank;
-	size_t	i;
+	size_t	y;
+	size_t	i1;
+	size_t	i2;
 	size_t	len;
-
-	i = 0;
-	if (!(blank = (size_t*)ft_memalloc(2)))
-		return (NULL);
-	len = ft_strlen(s);
-	while (s[i] && (s[i] == ' ' || s[i] == '\n' || s[i] == '\t'))
-		i++;
-	blank[0] = i;
-	i = len;
-	while (i != blank[0] && (s[i] == ' ' || s[i] == '\n' || s[i] == '\t'
-				|| s[i] == 0))
-		i--;
-	blank[1] = i;
-	return (blank);
-}
-
-char			*ft_strtrim(const char *s)
-{
-	size_t	i;
-	size_t	*blank;
-	char	*trim;
+	char	*dest;
 
 	if (s)
 	{
-		if (!(blank = count_blank(s)))
+		y = -1;
+		i1 = 0;
+		i2 = ft_strlen(s) - 1;
+		while (s[i1] == ' ' || s[i1] == '\n' || s[i1] == '\t')
+			i1++;
+		while ((s[i2] == ' ' || s[i2] == '\n' || s[i2] == '\t') && i2 > i1)
+			i2--;
+		len = i2 - i1 + 1;
+		if (i2 < i1)
+			len = 0;
+		if (!(dest = ft_strnew(len)))
 			return (NULL);
-		if (!(trim = ft_strnew(blank[1] - blank[0] + 1)))
-			return (NULL);
-		i = blank[0];
-		while (i <= blank[1])
-		{
-			trim[i - blank[0]] = s[i];
-			i++;
-		}
-		return (trim);
+		while (++y < len)
+			dest[y] = s[i1++];
+		return (dest);
 	}
 	return (NULL);
 }

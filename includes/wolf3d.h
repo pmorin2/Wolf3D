@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cheuben <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pmorin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/03 18:04:44 by cheuben           #+#    #+#             */
-/*   Updated: 2019/01/23 16:22:44 by pmorin           ###   ########.fr       */
+/*   Created: 2019/01/03 18:04:44 by pmorin            #+#    #+#             */
+/*   Updated: 2019/02/06 14:55:19 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define W 13
 # define S 1
 
-typedef struct          s_data
+typedef struct		s_data
 {
 	void			*mlx;
 	void			*win;
@@ -85,10 +85,10 @@ typedef struct          s_data
 	char			*line_test;
 	char			*l;
 	int				i;
-	double				wallx;
-	int				texX;
-	int                             texY;
-	int			texture[4][64][64];
+	double			wallx;
+	int				tex_x;
+	int				tex_y;
+	int				texture[4][64][64];
 }					t_data;
 
 int					exit_program(t_data *data);
@@ -115,7 +115,7 @@ void				error_map(t_data *mlx);
 int					check_wall(t_data *mlx);
 void				small_map(void);
 void				error_def_map(t_data *mlx);
-void                            error_def_mapfree(void);
+void				error_def_mapfree(void);
 void				init_tex(t_data *data);
 int					pixel_cal(t_data *data, int i, int texnum);
 #endif

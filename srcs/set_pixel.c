@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   set_pixel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cheuben <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pmorin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/03 18:04:36 by cheuben           #+#    #+#             */
-/*   Updated: 2019/01/03 18:04:38 by cheuben          ###   ########.fr       */
+/*   Created: 2019/01/03 18:04:36 by pmorin            #+#    #+#             */
+/*   Updated: 2019/02/06 14:47:33 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void		set_pixel(int x, int y, int color, t_data *data)
+void	set_pixel(int x, int y, int color, t_data *data)
 {
-	int		index;
+	int	index;
 
 	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
 	{

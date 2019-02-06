@@ -3,109 +3,91 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msiesse <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pmorin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 15:20:40 by msiesse           #+#    #+#             */
-/*   Updated: 2018/11/12 11:37:46 by msiesse          ###   ########.fr       */
+/*   Created: 2018/11/09 14:43:57 by pmorin            #+#    #+#             */
+/*   Updated: 2018/11/13 15:45:37 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	count_words(const char *s, char c)
+static size_t	count_mot(const char *s, char c)
 {
+	size_t	mot;
 	size_t	i;
-	size_t	words;
 
+	mot = 0;
 	i = 0;
-	words = 0;
 	while (s[i])
 	{
-		while (s[i] && s[i] == c)
+		while (s[i] == c)
 			i++;
-		if (s[i])
-			words++;
-		while (s[i] && s[i] != c)
+		mot++;
+		while (s[i] != c && s[i] != '\0')
 			i++;
 	}
-	return (words);
+	return (mot);
 }
 
-static size_t	len_k_word(const char *s, char c, size_t k)
+static int		alloc(char **tab, const char *s, char c, size_t *i)
 {
-	size_t	i;
-	size_t	count;
-	size_t	len;
+	size_t	lettre;
+	size_t	j;
 
-	i = 0;
-	count = 0;
-	len = 0;
-	while (s[i])
+	lettre = 0;
+	j = 0;
+	while (s[i[0]] != c && s[i[0]])
 	{
-		while (s[i] && s[i] == c)
-			i++;
-		count++;
-		if (count == k)
-			break ;
-		while (s[i] && s[i] != c)
-			i++;
+		lettre++;
+		i[0]++;
 	}
-	while (s[i] && s[i] != c)
+	if (!(tab[i[1]] = ft_strnew(lettre)))
+		return (0);
+	i[0] -= lettre;
+	while (s[i[0]] != c && s[i[0]] != '\0')
 	{
-		i++;
-		len++;
+		tab[i[1]][j] = s[i[0]];
+		i[0]++;
+		j++;
 	}
-	return (len);
+	return (1);
 }
 
-static char		**split(char **tab, size_t k[2], const char *s, char c)
+static char		**ft_rem(char const *s, char c, size_t *i, char **tab)
 {
-	size_t	i;
-	size_t	words;
-
-	words = count_words(s, c);
-	i = 0;
-	while (s[i])
+	while (s[i[0]])
 	{
-		while (s[i] && s[i] == c)
-			i++;
-		if (len_k_word(s, c, k[0] + 1) == 0)
-			break ;
-		if (!(tab[k[0]] = ft_strnew(len_k_word(s, c, k[0] + 1))))
-			return (NULL);
-		k[1] = 0;
-		while (s[i] && s[i] != c)
+		while (s[i[0]] == c)
+			i[0]++;
+		if (s[i[0]])
 		{
-			tab[k[0]][k[1]] = s[i];
-			i++;
-			k[1]++;
+			if (!(alloc(tab, s, c, i)))
+			{
+				free(tab);
+				return (NULL);
+			}
+			i[1]++;
+			while (s[i[0]] != c && s[i[0]] != '\0')
+				i[0]++;
 		}
-		k[0]++;
 	}
-	tab[k[0]] = 0;
+	tab[i[1]] = 0;
 	return (tab);
 }
 
-char			**ft_strsplit(const char *s, char c)
+char			**ft_strsplit(char const *s, char c)
 {
+	size_t	i[2];
 	char	**tab;
-	size_t	k[2];
-	size_t	words;
 
 	if (s)
 	{
-		k[0] = 0;
-		k[1] = 0;
-		words = count_words(s, c);
-		if (!(tab = (char**)malloc(sizeof(char*) * (words + 1))))
+		i[0] = 0;
+		i[1] = 0;
+		if (!(tab = malloc(sizeof(*tab) * (count_mot(s, c) + 1))))
 			return (NULL);
-		if (!(tab = split(tab, k, s, c)))
-		{
-			while (k[0]--)
-				free(tab[k[0]]);
-			return (NULL);
-		}
-		return (tab);
+		return (ft_rem(s, c, i, tab));
 	}
 	return (NULL);
 }

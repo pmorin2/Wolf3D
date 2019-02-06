@@ -3,22 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msiesse <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pmorin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 14:20:22 by msiesse           #+#    #+#             */
-/*   Updated: 2018/11/13 14:48:25 by msiesse          ###   ########.fr       */
+/*   Created: 2018/11/08 15:52:59 by pmorin            #+#    #+#             */
+/*   Updated: 2018/11/13 15:51:15 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isalpha(int c)
 {
-	unsigned char	ch;
-
-	if (c >= 0 && c < 256)
-		ch = (unsigned char)c;
-	else
-		return (0);
-	if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z'))
+	if (((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) && (c >= 0
+		&& c <= 255))
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: pmorin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 14:26:00 by pmorin            #+#    #+#             */
-/*   Updated: 2019/01/23 16:30:06 by pmorin           ###   ########.fr       */
+/*   Updated: 2019/02/06 14:24:44 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	def_map(t_data *mlx)
 	while (++i < mlx->line)
 		if (!(mlx->map[i] = malloc(sizeof(**mlx->map) * (mlx->col + 1))))
 		{
-		  free_map(&mlx->map);
+			free_map(&mlx->map);
 			ft_putendl("Malloc error");
 			exit(1);
 		}
@@ -38,20 +38,20 @@ static int	def_map(t_data *mlx)
 
 static int	line_col(t_data *mlx)
 {
-  int check;
+	int check;
 
-  check = 1;
+	check = 1;
 	while ((mlx->test = get_line(mlx->fd, &mlx->l)) >= 0
 			&& mlx->l[0] == 'x' && check)
 	{
 		check = mlx->test;
 		mlx->line++;
-		if(mlx->line == 1000)
-		  {
-		    ft_strdel(&mlx->l);
-		    ft_putendl("(Map is too big !)");
-		    return (1);
-		  }
+		if (mlx->line == 1000)
+		{
+			ft_strdel(&mlx->l);
+			ft_putendl("(Map is too big !)");
+			return (1);
+		}
 		mlx->col_count = ft_strlen(mlx->l);
 		ft_strdel(&mlx->l);
 		if (mlx->col == -1)
@@ -89,9 +89,9 @@ static int	close_open(t_data *mlx)
 
 int			parsor(t_data *mlx)
 {
-  int check;
+	int check;
 
-  check = 1;
+	check = 1;
 	close_open(mlx);
 	if (line_col(mlx))
 		error_def_mapfree();
@@ -104,7 +104,7 @@ int			parsor(t_data *mlx)
 	while ((mlx->test = get_line(mlx->fd, &mlx->l)) >= 0
 			&& mlx->l[0] == 'x' && check)
 	{
-	  check = mlx->test;
+		check = mlx->test;
 		mlx->i++;
 		remp_tab(mlx, mlx->l, mlx->i);
 		ft_strdel(&mlx->l);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msiesse <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pmorin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/11 10:54:44 by msiesse           #+#    #+#             */
-/*   Updated: 2018/11/20 17:23:45 by msiesse          ###   ########.fr       */
+/*   Created: 2018/11/12 11:29:52 by pmorin            #+#    #+#             */
+/*   Updated: 2018/11/12 11:31:07 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,16 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	unsigned int	new;
+	unsigned int nbr;
 
-	if (fd > 0)
+	if (n < 0)
 	{
-		if (n < 0)
-			ft_putchar_fd('-', fd);
-		new = (n > 0) ? n : -n;
-		if (new < 10)
-			ft_putchar_fd(new + 48, fd);
-		else
-		{
-			ft_putnbr_fd(new / 10, fd);
-			ft_putchar_fd(new % 10 + 48, fd);
-		}
+		ft_putchar_fd('-', fd);
+		nbr = n * -1;
 	}
+	else
+		nbr = n;
+	if (nbr >= 10)
+		ft_putnbr_fd(nbr / 10, fd);
+	ft_putchar_fd((nbr % 10) + '0', fd);
 }

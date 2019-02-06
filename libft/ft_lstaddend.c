@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tabdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstaddend.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msiesse <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pmorin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 17:13:29 by msiesse           #+#    #+#             */
-/*   Updated: 2018/11/28 17:16:48 by msiesse          ###   ########.fr       */
+/*   Created: 2018/11/15 11:40:29 by pmorin            #+#    #+#             */
+/*   Updated: 2018/11/15 13:33:03 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_tabdup(char **src)
+void	ft_lstaddend(t_list *lst, t_list *new)
 {
-	char	**dup;
-	size_t	i;
+	t_list *lsttemp;
+	t_list *cpnew;
 
-	i = 0;
-	while (src[i])
-		i++;
-	if (!(dup = (char**)malloc(sizeof(char*) * (i + 1))))
-		return (NULL);
-	i = 0;
-	while (src[i])
+	if (lst && new)
 	{
-		dup[i] = ft_strdup(src[i]);
-		i++;
+		cpnew = ft_lstnew(new->content, new->content_size);
+		lsttemp = lst;
+		while (lsttemp->next)
+			lsttemp = lsttemp->next;
+		cpnew->next = NULL;
+		lsttemp->next = cpnew;
 	}
-	dup[i] = 0;
-	return (dup);
 }
