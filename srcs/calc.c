@@ -6,7 +6,7 @@
 /*   By: pmorin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 18:03:58 by pmorin            #+#    #+#             */
-/*   Updated: 2019/02/06 14:44:34 by pmorin           ###   ########.fr       */
+/*   Updated: 2019/02/07 17:06:32 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void		calcul_side_dist(t_data *data)
 	else
 	{
 		data->step_x = 1;
-		data->side_dis_x = (data->map_x + 1.0 - data->ray_pos_x) *
-			data->delta_dis_x;
+		data->side_dis_x = (data->map_x + 1.0 - data->ray_pos_x)
+			* data->delta_dis_x;
 	}
 	if (data->ray_dir_y < 0)
 	{
@@ -49,8 +49,8 @@ void		calcul_side_dist(t_data *data)
 	else
 	{
 		data->step_y = 1;
-		data->side_dis_y = (data->map_y + 1.0 - data->ray_pos_y) *
-			data->delta_dis_y;
+		data->side_dis_y = (data->map_y + 1.0 - data->ray_pos_y)
+			* data->delta_dis_y;
 	}
 }
 

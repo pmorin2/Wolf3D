@@ -6,7 +6,7 @@
 /*   By: pmorin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 18:04:27 by pmorin            #+#    #+#             */
-/*   Updated: 2019/02/06 14:46:52 by pmorin           ###   ########.fr       */
+/*   Updated: 2019/02/06 15:57:15 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ void	after_val(t_data *data)
 	mlx_string_put(data->mlx, data->win, 20, 110, 0xB9121B
 				, "View Left = left_arrow");
 	mlx_string_put(data->mlx, data->win, 20, 130, 0xB9121B
-				, "Move Forward = up_arrow");
+				, "Move Forward = W");
 	mlx_string_put(data->mlx, data->win, 20, 150, 0xB9121B
-				, "Move Backward = down_arrow");
+				, "Move Backward = S");
 	mlx_string_put(data->mlx, data->win, 20, 170, 0xB9121B, "Move Left = A");
 	mlx_string_put(data->mlx, data->win, 20, 190, 0xB9121B, "Move Right = D");
 }
