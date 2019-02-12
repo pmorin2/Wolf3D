@@ -6,7 +6,7 @@
 /*   By: pmorin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 18:04:27 by pmorin            #+#    #+#             */
-/*   Updated: 2019/02/06 15:57:15 by pmorin           ###   ########.fr       */
+/*   Updated: 2019/02/12 16:47:12 by pmorin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	init(t_data *data)
 	data->plane_y = 0.66;
 	data->hit = 0;
 	data->i = -1;
+	data->l = NULL;
 	data->rot = M_PI / (double)50;
 	data->speed = 0.075;
 }
